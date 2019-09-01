@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Style-Type" content="text/css" /> 
+    <meta name="viewport" content="width=device-width">
+    <title>observables.html</title>
+    <link href="/library/skin/tool_base.css" type="text/css" rel="stylesheet" media="all" />
+    <link href="/library/skin/morpheus-default/tool.css" type="text/css" rel="stylesheet" media="all" />
+    <script type="text/javascript" src="/library/js/headscripts.js"></script>
+    <style>body { padding: 5px !important; }</style>
+  </head>
+  <body>
+<script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
+<!-- <p>paragraph</p> -->
+<script>
+    // const { Observable, of, from } = rxjs;
+    // const { map, filter } = rxjs.operators;
+    // var obs = Observable.create(function (observer) {
+    //     for (let i = 0; i < 100; i++) {
+    //         observer.next(i);
+    //     }
+    //     observer.next('CS572');
+    //     setTimeout(() => {
+    //         observer.next('CS472');
+    //         observer.error('Something went Wrong')
+    //         observer.complete();
+    //     }, 3000);
+    // });
+    // var subscription = obs.subscribe(
+    //     function (x) { console.log(`Value: ${x}`); },
+    //     function (err) { console.error(err); },
+    //     function () { console.info(`Done`); });
+
+    /////////////////////
+    // of(1, 2, 3)
+    //     .pipe(
+    //         map((n) => n + 3),
+    //         filter((n) => n >= 2)
+    //     )
+    //     .subscribe(
+    //         (x) => console.log(x),
+    //         null,
+    //         () => console.log('done')
+    //     );
+    //////////////////////
+
+    // const data = [
+    //     { id: 0, name: 'Learning Node', topic: 'Node JS', },
+    //     { id: 1, name: 'Learning MongoDB', topic: 'MongoDB', },
+    //     { id: 2, name: 'Learning TypeScript', topic: 'TypeScript', }]
+
+    // from(data)
+    //     .pipe(
+    //         map((obj) => ({ msg: `${obj.name} is awesome!` }))
+    //     )
+    //     .subscribe((obj) => console.log(obj.msg))
+    /////////
+
+    // const { fromEvent } = rxjs;
+
+    // const obs = fromEvent(document, 'click');
+    // obs.subscribe((e) => console.log(e));
+    // obs.subscribe((e) => console.log(e.target));
+    //////////////
+
+    // let myPromise = new Promise((resolve, reject) => {
+    //     setTimeout(function () { resolve("Success!"); }, 2000);
+    // });
+    // // myPromise.then((e) => console.log(e))
+    // from(myPromise).subscribe((e) => console.log(e), null,
+    //     () => console.log('Finish'));
+    ///////////////////
+    // const { range } = rxjs;
+
+    // range(1, 20)
+    //     .pipe(
+    //         filter(x => x % 2 === 1),
+    //         map(x => x + x)
+    //     )
+    //     .subscribe(x => console.log(x));
+    /////////////
+    // const { Subject } = rxjs;
+    // var myObservable = new Subject();
+    // myObservable.subscribe(value => console.log(value));
+
+    // setTimeout(() => { myObservable.next('CS572'); }, 3000);
+
+</script>
+
+
+<!-- 
+<button>Click me</button>
+<div></div> -->
+
+<script>
+    // var button = document.querySelector('button');
+    // var div = document.querySelector('div');
+
+    // const { Subject, BehaviorSubject } = rxjs;
+    // var myObservable = new BehaviorSubject('Not clicked');
+    // // var myObservable = new Subject();
+
+    // myObservable.subscribe((value) => div.textContent = value);
+
+    // button.addEventListener('click', () => myObservable.next('Clicked!'));
+</script>
+
+<!-- <input/> -->
+<script>
+    // const { fromEvent } = rxjs;
+    // const { map, throttleTime, debounceTime, take, pluck } = rxjs.operators;
+
+    // var input = fromEvent(document.querySelector('input'), 'input');
+
+    // input
+    //     .pipe(
+    //         map(d => d.data),
+    //         map(d => d.toUpperCase())
+    //     )
+    //     .subscribe((e) => console.log(e))
+    // input
+    //     .pipe(
+    //         // sleep for 200 ms and emit one value after that, sleep again
+    //         throttleTime(1000),
+    //         map(event => event.target.value)
+    //     )
+    //     .subscribe(value => console.log(value));
+
+
+    // input
+    //     .pipe(
+    //         // When no more events coming into the observable for 200ms => Emit the value
+    //         // debounceTime(300),
+    //         // map(event => event.target.value),
+    //         pluck('target', 'value'),
+    //         take(3)
+
+    //     )
+    //     .subscribe(value => console.log(`Check if user exists: ${value}`));
+
+</script>
+
+
+
+
+<script>
+    const { interval, of } = rxjs;
+    const { map, flatMap, mergeAll, take } = rxjs.operators;
+
+    interval(100) // ms
+        .pipe(
+            take(10),
+            // map(() => of(1, 2, 3)),
+            // mergeAll()
+            flatMap(x => of(1, 2, 3)),
+    )
+
+
+        .subscribe(x => console.log(x));
+
+</script>
+  </body>
+</html>
