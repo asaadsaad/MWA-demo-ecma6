@@ -4,10 +4,12 @@ const [name, id, website] = ['Asaad', 123, 'mum.edu'];
 console.log({ name, id, website })
 
 // destructuring Objects
+// useful with function params
 const { width = 100, height = 100, color = 'blue', fontSize = 25 } = { width: 300, color: 'black' };
 console.log({ width, height })
 
 // Spread Operator 
+// Useful with immutable data structure
 const technologies = ['Node', 'NoSQL', 'Angular']
 const gainedKnowledge = ['MongoDB', 'TypeScript', ...technologies];
 
