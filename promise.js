@@ -1,8 +1,13 @@
 function giveMePizza() {
+    console.log(`Order Received`)
     return new Promise(function (resolve, reject) {
+        console.log(`Working on Pizza`)
         setTimeout(() => {
+            console.log(`Preparing Pizza`)
             resolve('Neapolitan')
+            console.log(`Baking Pizza`)
         }, 5000);
+        console.log(`Pizza is ready`)
     });
 }
 
