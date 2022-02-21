@@ -145,14 +145,14 @@
 
 <script>
     const { interval, of } = rxjs;
-    const { map, flatMap, mergeAll, take } = rxjs.operators;
+    const { map, mergeMap, mergeAll, take } = rxjs.operators;
 
     interval(100) // ms
         .pipe(
             take(10),
             // map(() => of(1, 2, 3)),
             // mergeAll()
-            flatMap(x => of(1, 2, 3)),
+            mergeMap(x => of(1, 2, 3)),
     )
 
 
